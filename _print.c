@@ -2,29 +2,50 @@
 #include "main.h"
 /**
  * _print - print to stdout
- * @c: character to check
- * @arg: fromwe can get value to print
+ * @format: character to check
+ * @args: fromwe can get value to print
  * Return: length of string
  */
 
-int _print(char c, va_list arg)
+int _print(const char *format, va_list args)
 {
-	int sum = 0;
+	int (*sp_func)(va_list);
+	int count = 0, i;
 
-	switch (c)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
+	for (i = 0; format[i] != '\0' ; i++)
 	{
-		case '%':
-			_putchar('%'), sum++;
-		break;
-		case 'c':
-			_putchar(va_arg(arg, int)), sum++;
-		break;
-		case 's':
-			sum += _print_str(va_arg(arg, char *));
-		break;
-		default:
-			_putchar('%'), _putchar(c), sum += 2;
-		break;
+		if (format[i] =='%')
+		{
+			if (format[i + 1] != '%')
+			{
+				sp_funct = get_with(format[i + 1]);
+				if (sp_func = NULL)
+				{
+					_write(format[1]);
+					count++;
+				}
+				else
+				{
+					count = count + sp_func(args);
+					i++;
+				}
+			}
+			else
+			{
+				_write(format[1]);
+				count++;
+				i++;
+			}
+		}
+		else
+		{
+			_write(format[i]);
+			count++;
+		}
 	}
-	return (sum);
+	va_end(args);
+	return (count);
 }
