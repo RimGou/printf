@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] != '\0')
 			{
-				sum += printer(format[i], arg);
+				sum += _print(format[i], arg);
 			}
 			else
 			{
