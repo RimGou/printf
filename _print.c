@@ -1,9 +1,10 @@
 #include <stdarg.h>
+#include <stdlib.h>
 #include "main.h"
 /**
  * _print - print to stdout
  * @format: character to check
- * @args: fromwe can get value to print
+ * @args: variadic arg
  * Return: length of string
  */
 
@@ -21,7 +22,7 @@ int _print(const char *format, va_list args)
 		{
 			if (format[i + 1] != '%')
 			{
-				sp_funct = get_with(format[i + 1]);
+				sp_func = get_with(format[i + 1]);
 				if (sp_func = NULL)
 				{
 					_write(format[1]);

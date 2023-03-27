@@ -1,8 +1,15 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdrag.h>
+
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdarg.h>
+
+typedef struct sp
+{
+	char _type;
+	int (*f)(va_list args);
+} print_it;
 
 int (*get_with(char format))(va_list);
 int _write(char c);

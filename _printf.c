@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int num_chars_printed = 0;
+	int length = 0;
 
 	if (format == NULL)
 		return (-1);
